@@ -33,8 +33,8 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-    deployment:
-      production:
-        branch: master
-        heroku:
-          appname: josebrowne
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: josebrowne
