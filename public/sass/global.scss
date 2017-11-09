@@ -1,0 +1,530 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+body{
+    background-color: $background-main;
+    color: $text-main;
+    min-height: 100%;
+    line-height: 1.5;
+    font:16px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+html{
+    height: 100%;
+}
+
+a{
+    color: $text-secondary;
+    &:visited{}
+    &:hover{}
+}
+
+i{ white-space: pre-line; }
+
+p{
+    font-weight: normal;
+    line-height: 1.64;
+}
+
+hr{
+    border: 0;
+    height: 0;
+    border-bottom: 1px solid $gray-lighter;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
+
+// medium
+blockquote {
+    font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+    font-style: italic;
+    border-left: 3px solid $flat-blue;
+    padding-left: 20px;
+    margin-left: -10px;
+    margin-top: -1px;
+    padding-bottom: 1px;
+    font-size: 18px;
+}
+
+article img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#main{
+    width: 100%;
+}
+
+.pull-left{ float: left }
+.pull-right{ float: right }
+
+.clear {
+    @include clear;
+}
+
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+
+.small   { font-size: 85%; }
+.x-small { font-size: 80%; }
+.container{
+    overflow: hidden;
+    padding-left: $sidebarWidth;
+
+    .column{
+        position: relative;
+        float: left;
+        margin-bottom: -99999px;
+        padding-bottom: 99999px;
+    }
+}
+
+#shareme{
+    >div{
+        display: inline-block;
+        margin-right: 10px;
+        min-width: 90px;
+    }
+}
+
+// Disqus Container
+#disqus_thread{
+    margin-top: 25px;
+}
+// Button
+.btn{
+    color: white;
+    padding: 2px 20px;
+    line-height: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    @include border-radius(4px);
+
+    $lighten-amount: 4%;
+
+    // Default Color
+    background-color: $flat-blue;
+    &:hover{ background-color: lighten($flat-blue, $lighten-amount) }
+
+    &.tips{
+        background-color: $flat-green;
+        &:hover{ background-color: lighten($flat-green, $lighten-amount) }
+    }
+    &.tutorials{
+        background-color: $flat-blue;
+        &:hover{ background-color: lighten($flat-blue, $lighten-amount) }
+    }
+    &.personal{
+        background-color: $flat-orange;
+        &:hover{ background-color: lighten($flat-orange, $lighten-amount) }
+    }
+
+
+
+}
+
+/*
+  ==========================================================================
+    Header
+  ==========================================================================
+*/
+    $gutter: 4%;
+    header{
+        z-index: 100;
+        height: 20px;
+        padding: 20px $gutter 20px $gutter;
+        background-color: white;
+        @include box-shadow( 1px, 0, 0, rgba(210,211,212,.25) );
+
+        .search{
+            position: relative;
+            width: 190px;
+            top: -20px;
+            right: -40px;
+            padding: 20px 20px;
+            border: none;
+            border-left: 1px solid $gray-lighter;
+            @include placeholder($gray-lighter);
+        }
+
+        .title{
+            font-size: 26px;
+            color: $blue-dark-light;
+            position: relative;
+            top: -10px;
+            font-weight: 200;
+            text-transform: uppercase;
+
+            a{
+                padding: 5px 20px 25px 20px;
+                margin-left: -20px;
+                display: none;
+                &:active{
+                    i{
+                        color: $blue-dark;
+                        text-shadow: 0px 0px 23px #4E6B91;
+                    }
+                }
+                i{
+                    color: $gray-light;
+                }
+            }
+        }
+    }
+
+/*
+  ==========================================================================
+    Sidebar: Logo, Nav..etc
+  ==========================================================================
+*/
+    #sidebar{
+        position: fixed;
+        left: 0;
+        width: $sidebarWidth;
+        right: $sidebarWidth;
+        margin-right: -$sidebarWidth;
+        background-color: $blue-dark-light;
+        height: 1000px;
+
+        .logo{
+            height: 60px;
+            background-color: $blue-dark;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-image: url(../img/logo.png);
+            @include image-2x("../img/logo-2x.png", 105px, 29px);
+        }
+
+        .nav{
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+            li{
+                &.all{ border-left: 2px solid $tag-all }
+                &.tips{ border-left: 2px solid $tag-tips }
+                &.tutorials{ border-left: 2px solid $tag-tutorials }
+                &.personal{ border-left: 2px solid $tag-personal }
+
+                &:hover,&.active{
+                    background-color: #2e3136;
+                    a{
+                        color: $gray-lighter;
+                    }
+                }
+            }
+            a{
+                color: $gray-light;
+                width: 100%;
+                display: block;
+                text-decoration: none;
+                margin-left: 10px;
+                padding: 10px 0;
+                i{
+                    width: 14px;
+                    margin-right: 20px;
+                    display: inline-block;
+                    text-align: center;
+                }
+            }
+        }
+
+        .comments{
+            padding: 5px 10px;
+            border-bottom: 1px solid #2e3136;
+
+            p{
+                margin: 0 0 5px 0;
+                color: $gray-light;
+            }
+
+            >span{
+                margin: 0 0 5px 0;
+                display: block;
+                font-size: 90%;
+            }
+        }
+
+        // Side Bar headers / titles
+        h3{
+            padding: 5px 10px;
+            background-color: $blue-dark;
+            text-transform: uppercase;
+            font-size: 13px;
+            color: $gray-lighter;
+        }
+
+        footer{
+            color: #41464c;
+            text-transform: uppercase;
+            margin-top: 40px;
+            display: block;
+            width: 100%;
+            font-size: x-small;
+        }
+        >p{
+            font-size: 80%;
+            padding: 0 10px;
+        }
+        // Twitter follow button
+        .twitter-follow-button{
+            padding: 0 0 0 11px;
+        }
+    }
+
+/*
+  ==========================================================================
+    Content
+  ==========================================================================
+*/
+    .content article{
+        visibility: hidden;
+        padding: 5px 25px;
+        margin: 30px $gutter;
+        z-index: 1;
+        background: white;
+        @include border-radius(4px);
+        @include box-shadow( 2px, 0, 0, rgba(210,211,212,.75) );
+        .title{
+            display: block;
+            text-decoration: none;
+            margin: $h1_margin;
+            font-size: $h1_font_size;
+            font-weight: 400;
+            color: $blue-dark-light;
+            text-transform: uppercase;
+            &:hover{
+              cursor: pointer;
+            }
+        }
+        .footer{
+            font-size: 95%;
+            margin: 0 -25px;
+            color: $gray-light;
+            padding: 15px 25px;
+            border-top: 1px solid $gray-lighter;
+            margin-top: 20px;
+
+            .meta{
+                > span{
+                    margin-right: 20px;
+                    display: inline-block;
+                }
+
+                i{
+                    margin: 0 10px 0 25px;
+                    &:first-child{ margin-left: 0 }
+                }
+                a{
+                    display: inline;
+                    padding-left: 5px;
+                    color: $gray-light;
+                }
+            }
+        }
+
+        &.in {
+            visibility: visible !important;
+            @include translateY(150px);
+            animation: in 0.8s ease forwards;
+        }
+
+        &.already-in {
+            visibility: visible !important;
+            @include translateY(0);
+            animation: none;
+        }
+    }
+
+    .endCollection{
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        margin: 0 auto 20px;
+        text-align: center;
+        display: block;
+        font-weight: 200;
+
+        .sadText{
+            font-weight: 200;
+        }
+
+        a{
+            color: $flat-blue;
+            font-size: 24px;
+            padding: 0 17px 0;
+            text-decoration: none;
+            &:hover{
+                i { color: lighten($flat-blue, 10%) }
+            }
+        }
+    }
+
+    .animate {
+        @include translateZ(0);
+        -webkit-perspective: 1000;
+        -webkit-backface-visibility: hidden;
+        @include transition( all, .2s, ease-out );
+    }
+
+    @include keyframes( in ){
+        to { @include translateY(0); }
+    }
+/*
+  ==========================================================================
+    Modal Viewer
+  ==========================================================================
+*/
+    // Overlay
+    .md-overlay{
+        visibility: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        background-color: rgba(32, 40, 49, 0.9);
+        opacity: 0;
+
+    }
+
+    // X button
+    .md-overlay-x{
+        visibility: hidden;
+        position: fixed;
+        top: 0;
+        right: 0;
+        padding: 3px 10px 5px 10px;
+        color: hsla(0, 100%, 100%, 0.65);
+        text-shadow: 0px 0px 8px rgba(58, 56, 56, 0.45);;
+        font-weight: 200;
+        font-size: 31px;
+        z-index: 10000;
+        &:hover{
+            cursor: pointer;
+            color: #FFF;
+        }
+    }
+
+    // Content
+    .md-content{
+        max-width: 1000px;
+        margin: 40px auto;
+        position: relative;
+        width: 90%;
+        border: 10px solid rgba(255, 255, 255, 0.1);
+        z-index: 147;
+        display: none;
+
+    }
+
+    // Article
+    .md-content article {
+        color: $blue-dark-light;
+        background-color: white;
+        padding: 0 25px;
+        padding-bottom: 15px;
+
+        .info{
+            border-bottom: 1px solid $gray-lighter;
+            padding: 5px 20px;
+            h1{ margin: 0}
+            .meta{
+                > span{
+                    margin-right: 20px;
+                    display: inline-block;
+                }
+                color: $gray-light;
+                i{
+                    margin: 0 10px 0 25px;
+                    &:first-child{ margin-left: 0 }
+                }
+                a{
+                    display: inline;
+                    padding-left: 5px;
+                    color: $gray-light;
+                }
+            }
+            &.all{ border-left: 3px solid $tag-all }
+            &.tips{ border-left: 3px solid $tag-tips }
+            &.tutorials{ border-left: 3px solid $tag-tutorials }
+            &.personal{ border-left: 3px solid $tag-personal }
+        }
+
+        .full{
+            margin: 0 -25px;
+        }
+
+        h2{ border-bottom: 1px solid $gray-lighter; }
+
+    }
+
+    // Modal Mode
+    body.md-mode .md-content{ display: block }
+    body.md-mode .container{
+        position: fixed;
+        // @include blur(3px);
+        z-index: 0;
+    }
+
+    body.md-mode .md-overlay-x{
+        visibility: visible;
+    }
+
+    body.md-mode{
+        .md-overlay{
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+
+/*
+  ==========================================================================
+   Embeds
+  ==========================================================================
+*/
+.embed {
+    position: relative; padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    height: auto;
+
+    iframe, object, embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+/*
+  ==========================================================================
+   nprogress overrides
+  ==========================================================================
+*/
+body.tag-personal {@include loadingColor($tag-personal)}
+body.tag-tutorials{@include loadingColor($tag-tutorials)}
+body.tag-tips     {@include loadingColor($tag-tips)}
+
+
+// AddThis is kinda stupid
+#at16p{ display:none }
+/*
+  ==========================================================================
+   Debug Trick
+  ==========================================================================
+*/
+// * {
+//     background:rgba(0,0,0,0.2);
+// }

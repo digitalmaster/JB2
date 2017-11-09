@@ -1,0 +1,38 @@
+{
+  "name": "jb2",
+  "subdomain": "josebrowne",
+  "domains": [
+    "josebrowne.com",
+    "www.josebrowne.com"
+  ],
+  "description": "My Personal Blog and Playground",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "~3.4.8",
+    "jade": "~1.1.5",
+    "connect": "~3.5.0",
+    "jsontool": "~7.0.1",
+    "mongodb": ">=1.3.23",
+    "mongoskin": ">=1.3.20-alpha",
+    "moment": ">=2.5.1",
+    "prerender-node": ">=0.1.17"
+  },
+  "version": "0.1.0-37",
+  "engines": {
+    "node": "5.6.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-develop": "~0.3.0",
+    "request": "~2.79.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-sass": "~0.7.2",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.3.2",
+    "grunt-autoprefixer": "~0.7.2",
+    "grunt-groundskeeper": "~0.1.7"
+  }
+}
