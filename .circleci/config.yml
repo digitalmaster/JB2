@@ -1,45 +1,4 @@
-version: 2
-jobs:
-  build-job:
-    docker:
-      - image: circleci/node:7.10
+version: 2.1
 
-    steps:
-      - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: npm install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-  deploy-job:
-    docker:
-      - image: circleci/node:7.10
-
-    steps:
-      - checkout
-      - run:
-          name: Deploy Master to Heroku
-          command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/josebrowne.git master
-
-workflows:
-   version: 2
-   build-deploy:
-     jobs:
-       - build-job
-       - deploy-job:
-           requires:
-             - build-job
-           filters:
-             branches:
-               only: master
+orbs:
+  hello-build: circleci/hello-build@0.0.10
